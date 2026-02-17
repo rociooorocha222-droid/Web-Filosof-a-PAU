@@ -1,0 +1,233 @@
+/* --- ESTILO PREMIUM DARK ACADEMIA --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+    --bg-color: #0f172a;       /* Azul noche muy oscuro */
+    --card-bg: #1e293b;        /* Gris azulado para tarjetas */
+    --text-primary: #e2e8f0;   /* Blanco roto */
+    --text-secondary: #94a3b8; /* Gris suave */
+    --accent: #d4af37;         /* Dorado metálico */
+    --font-title: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.8;
+}
+
+/* --- NAVEGACIÓN (Se mantiene en todas las páginas) --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--accent);
+}
+
+/* --- PORTADA (HERO SECTION) --- */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(15,23,42,0.7), rgba(15,23,42,0.7)), url('img/portada.jpg'); /* Asegúrate de tener esta imagen */
+    background-size: cover;
+    background-position: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-family: var(--font-title);
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: var(--accent);
+    font-style: italic;
+    max-width: 600px;
+}
+
+/* --- GRID DE SELECCIÓN DE ÉPOCAS (Para el Index) --- */
+.epocas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 4rem 5%;
+}
+
+.epoca-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(255,255,255,0.05);
+    text-decoration: none; /* Para que funcione como enlace */
+    display: block;
+}
+
+.epoca-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border-color: var(--accent);
+}
+
+.epoca-card h2 {
+    font-family: var(--font-title);
+    color: var(--accent);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.epoca-card p { color: var(--text-secondary); }
+
+/* --- DISEÑO DE LAS SUBPÁGINAS (Autores) --- */
+.header-pagina {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: var(--card-bg);
+}
+
+.header-pagina h1 {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--accent);
+}
+
+.container-autores {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 20px;
+}
+
+.autor-section {
+    display: flex; /* Flexbox para poner foto y texto lado a lado */
+    gap: 3rem;
+    margin-bottom: 6rem;
+    align-items: center;
+}
+
+/* Invertir orden en cada par (efecto zigzag) */
+.autor-section:nth-child(even) { flex-direction: row-reverse; }
+
+.autor-img img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 10px 10px 0px var(--accent);
+}
+
+.autor-info h2 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.autor-info h3 {
+    color: var(--accent);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.btn-volver {
+    display: inline-block;
+    margin: 2rem 5%;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3rem; }
+    .autor-section, .autor-section:nth-child(even) { flex-direction: column; text-align: center; }
+    .nav-links { display: none; } /* En móvil simplificado */
+}
+/* --- FUERZA BRUTA PARA QUITAR EL MORADO --- */
+a {
+    text-decoration: none !important; /* Quita el subrayado */
+    color: inherit; /* Hereda el color blanco/dorado, ignora el azul/morado */
+}
+
+/* --- ESTILO DE LAS TARJETAS (CUADROS) --- */
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.card {
+    /* Esto hace que el enlace sea una CAJA, no un texto */
+    display: block; 
+    background: rgba(255, 255, 255, 0.05); /* Fondo cristal */
+    border: 1px solid rgba(212, 175, 55, 0.3); /* Borde dorado fino */
+    border-radius: 15px;
+    padding: 2.5rem;
+    text-align: center;
+    transition: all 0.4s ease; /* Suavidad al mover */
+    position: relative;
+    overflow: hidden;
+}
+
+/* EFECTO INTERACTIVO (HOVER) */
+.card:hover {
+    transform: translateY(-10px); /* Se levanta al pasar el ratón */
+    background: rgba(212, 175, 55, 0.1); /* Se ilumina un poco en dorado */
+    border-color: #d4af37; /* El borde brilla más */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra 3D */
+}
+
+/* TÍTULOS DENTRO DE LA TARJETA */
+.card h2 {
+    font-family: 'Cinzel', serif;
+    color: #d4af37; /* SIEMPRE DORADO */
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    color: #cccccc; /* Gris claro, nunca morado */
+    font-size: 1rem;
+}

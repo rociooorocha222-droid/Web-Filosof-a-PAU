@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>WIDGETS - FILOSOFÍA</title>
+    <link rel="stylesheet" href="Rocío Rocha Castro - archivo_css (1).css">
+    
+    <style>
+        /* ---------------------------------------------------- */
+        /* ESTILOS DEL MENÚ DESPLEGABLE (NUEVO)                 */
+        /* ---------------------------------------------------- */
+        /* Contenedor del menú para alinear los items */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Espacio entre enlaces */
+        }
+
+        /* El contenedor del botón desplegable */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* El botón del menú (Utilidades) */
+        .dropbtn {
+            background-color: transparent;
+            color: white;
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            font-family: inherit; /* Hereda la fuente de tu web */
+            text-transform: uppercase; /* Opcional: mayúsculas como el resto */
+        }
+
+        /* El contenido oculto (la lista de widgets) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1a1a1a; /* Fondo oscuro */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8);
+            border: 1px solid #d4af37; /* Borde dorado */
+            z-index: 1000;
+            border-radius: 5px;
+        }
+
+        /* Los enlaces dentro del desplegable */
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Efecto hover en los enlaces del desplegable */
+        .dropdown-content a:hover {
+            background-color: #d4af37;
+            color: black;
+        }
+
+        /* Mostrar el menú al pasar el ratón */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Cambiar color del botón principal al desplegar */
+        .dropdown:hover .dropbtn {
+            color: #d4af37;
+        }
+
+        /* ---------------------------------------------------- */
+        /* ESTILOS DE LOS WIDGETS (YA EXISTENTES)               */
+        /* ---------------------------------------------------- */
+        .widget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+            padding-bottom: 50px; /* Espacio extra abajo */
+        }
+
+        .widget-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+            /* Esto es clave para que los enlaces internos no queden tapados por el menú fijo si lo tienes */
+            scroll-margin-top: 100px; 
+        }
+        
+        .widget-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .widget-card h2 {
+            color: #d4af37;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        input, select {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #d4af37;
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            margin: 5px;
+            width: 80%;
+        }
+
+        button.action-btn {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        button.action-btn:hover {
+            background: #fff;
+            box-shadow: 0 0 10px #d4af37;
+        }
+
+        #reloj-display {
+            font-family: 'Courier New', monospace;
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px #d4af37;
+            margin: 20px 0;
+        }
+
+        .resultado-texto {
+            color: #ddd;
+            margin-top: 15px;
+            font-style: italic;
+            min-height: 40px;
+        }
+
+        #imagenes-grid img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #555;
+        }
+        
+        #imagenes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        /* Ajuste para móvil: que el desplegable no rompa el diseño */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+            }
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+                background: rgba(255,255,255,0.05);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="Rocío Rocha Castro - archivo_html.html" class="logo">FILOSOFÍA</a>
+        
+        <div class="nav-links">
+            <a href="Rocío Rocha Castro - archivo_html.html">Inicio</a>
+            <a href="antigua.html">Antigua</a>
+            <a href="medieval.html">Medieval</a>
+            <a href="moderna.html">Moderna</a>
+            <a href="contemporanea.html">Contemporánea</a>
+            
+            <div class="dropdown">
+                <button class="dropbtn">WIDGETS ▾</button>
+                <div class="dropdown-content">
+                    <a href="#card-reloj">⏳ Reloj</a>
+                    <a href="#card-clima">🌤️ Clima</a>
+                    <a href="#card-moneda">💱 Divisas</a>
+                    <a href="#card-cita">💭 Citas</a>
+                    <a href="#card-galeria">🖼️ Galería</a>
+                    <a href="#card-chiste">😂 Humor</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="header-pagina">
+        <h1>WIDGETS</h1>
+        <p>Herramientas útiles</p>
+    </header>
+
+    <main class="container">
+        <a href="Rocío Rocha Castro - archivo_html.html" class="btn-volver">← Volver al inicio</a>
+
+        <div class="widget-grid">
+
+            <div class="widget-card" id="card-reloj">
+                <h2>⏳ El Tiempo</h2>
+                <div id="reloj-display">00:00:00</div>
+                <p style="color: #aaa; font-size: 0.9rem;">Hora actual en tiempo real</p>
+            </div>
+
+            <div class="widget-card" id="card-clima">
+                <h2>🌤️ El Clima</h2>
+                <input type="text" id="ciudad-input" placeholder="Ej: Madrid, Atenas...">
+                <button class="action-btn" onclick="obtenerClima()">Ver Clima</button>
+                <div id="clima-resultado" class="resultado-texto"></div>
+            </div>
+
+            <div class="widget-card" id="card-moneda">
+                <h2>💱 Divisas</h2>
+                <input type="number" id="monto" value="1" placeholder="Cantidad">
+                <select id="moneda-origen">
+                    <option value="EUR">Euro (€)</option>
+                    <option value="USD">Dólar ($)</option>
+                    <option value="GBP">Libra (£)</option>
+                    <option value="MXN">Peso MX ($)</option>
+                </select>
+                <button class="action-btn" onclick="convertirMoneda()">Convertir</button>
+                <div id="resultado-moneda" class="resultado-texto"></div>
+            </div>
+
+            <div class="widget-card" id="card-cita">
+                <h2>💭 Cita Filosófica</h2>
+                <div id="cita-display" style="min-height: 100px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                    <p id="cita-texto" style="font-style: italic; color: #fff; font-size: 1.1rem;">"Pulsa el botón para recibir sabiduría."</p>
+                    <p id="cita-autor" style="color: #d4af37; margin-top: 10px; font-weight: bold;"></p>
+                </div>
+                <button class="action-btn" onclick="obtenerCita()">Nueva Cita</button>
+            </div>
+
+            <div class="widget-card" id="card-galeria">
+                <h2>🖼️ Descanso Visual</h2>
+                <div id="imagenes-grid"></div>
+                <button class="action-btn" onclick="cargarImagenes()">Cargar Fotos</button>
+            </div>
+
+            <div class="widget-card" id="card-chiste">
+                <h2>😂 Humor</h2>
+                <p id="chiste-texto" class="resultado-texto" style="font-size: 1.1rem; color: #fff;">¿Preparado para reír?</p>
+                <button class="action-btn" onclick="obtenerChiste()">Contar Chiste</button>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // ----------------------------------------
+        // BASE DE DATOS INTERNA (Citas y Chistes)
+        // ----------------------------------------
+        const citasFilosoficas = [
+            { texto: "Solo sé que no sé nada.", autor: "Sócrates" },
+            { texto: "Pienso, luego existo.", autor: "René Descartes" },
+            { texto: "El hombre es un animal político.", autor: "Aristóteles" },
+            { texto: "Cree para entender y entiende para creer.", autor: "San Agustín" },
+            { texto: "El corazón tiene razones que la razón ignora.", autor: "Blaise Pascal" },
+            { texto: "Dios ha muerto.", autor: "F. Nietzsche" },
+            { texto: "Lo que no te mata te hace más fuerte.", autor: "F. Nietzsche" },
+            { texto: "Estamos condenados a ser libres.", autor: "Jean-Paul Sartre" },
+            { texto: "El infierno son los otros.", autor: "Jean-Paul Sartre" },
+            { texto: "La vida no examinada no merece la pena ser vivida.", autor: "Sócrates" },
+            { texto: "Yo soy yo y mi circunstancia.", autor: "Ortega y Gasset" },
+            { texto: "Donde reina el amor, sobran las leyes.", autor: "Platón" },
+            { texto: "Atrévete a saber (Sapere Aude).", autor: "Immanuel Kant" },
+            { texto: "El hombre es un lobo para el hombre.", autor: "Thomas Hobbes" }
+        ];
+
+        const chistesEsp = [
+            "¿Cuál es el colmo de un filósofo? Que le salga un hijo ingeniero.",
+            "— Papá, ¿qué es la filosofía?\n— Cállate y corre, que perdemos el bus.",
+            "Descartes entra en un bar. El camarero le pregunta: '¿Quiere una cerveza?'. Descartes responde: 'No pienso'. Y desaparece.",
+            "Va un filósofo y dice: 'Dudo, luego existo'. Y el otro le contesta: 'Pues yo como, luego engordo'.",
+            "¿Por qué el libro de matemáticas se suicidó? Porque tenía demasiados problemas.",
+            "— ¡Soldado! ¡Ice la bandera!\n— Pues le ha quedado muy bonita mi sargento.",
+            "El gato de Schrödinger entra en un bar... y no entra.",
+            "Un optimista ve el vaso medio lleno. Un pesimista ve el vaso medio vacío. Un filósofo pregunta: ¿por qué hay vaso?",
+            "¿Qué hace una abeja en el gimnasio? ¡Zum-ba!",
+            "— Oye, ¿qué tal tu primer día de parkour?\n— De miedo, me he roto los dientes, pero el bordillo está bien.",
+            "Dios le dice a Adán: 'Os daré dos virtudes: inteligencia y simpatía. Pero solo podréis tener una'. Y así fue como creó a los cuñados.",
+            "Hay 10 tipos de personas en el mundo: los que saben binario y los que no."
+        ];
+
+        // ----------------------------------------
+        // LÓGICA
+        // ----------------------------------------
+
+        // 1. RELOJ
+        function actualizarReloj() {
+            const ahora = new Date();
+            document.getElementById('reloj-display').textContent = ahora.toLocaleTimeString('es-ES');
+        }
+        setInterval(actualizarReloj, 1000);
+
+        // 2. CLIMA
+        function obtenerClima() {
+            const ciudad = document.getElementById('ciudad-input').value;
+            const div = document.getElementById('clima-resultado');
+            if (!ciudad) { div.innerHTML = "Escribe una ciudad primero."; return; }
+            div.innerHTML = "Buscando...";
+            
+            fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${ciudad}&count=1&language=es&format=json`)
+                .then(r => r.json())
+                .then(d => {
+                    if (!d.results) { div.innerHTML = "Ciudad no encontrada"; return; }
+                    const { latitude, longitude } = d.results[0];
+                    return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m`);
+                })
+                .then(r => r.json())
+                .then(data => {
+                    if(data.current) {
+                        div.innerHTML = `Temp: <b>${data.current.temperature_2m}°C</b><br>Humedad: ${data.current.relative_humidity_2m}%`;
+                    }
+                })
+                .catch(e => div.innerHTML = "Error de conexión");
+        }
+
+        // 3. MONEDAS
+        function convertirMoneda() {
+            const monto = document.getElementById('monto').value;
+            const moneda = document.getElementById('moneda-origen').value;
+            const div = document.getElementById('resultado-moneda');
+            div.innerHTML = "Calculando...";
+            
+            fetch(`https://open.er-api.com/v6/latest/${moneda}`)
+                .then(r => r.json())
+                .then(d => {
+                    let html = "";
+                    const destinos = ['USD', 'EUR', 'GBP', 'MXN'];
+                    destinos.forEach(dest => {
+                        if (dest !== moneda) {
+                            html += `<div style="margin-top:5px;">${(monto * d.rates[dest]).toFixed(2)} ${dest}</div>`;
+                        }
+                    });
+                    div.innerHTML = html;
+                })
+                .catch(e => div.innerHTML = "Error al convertir");
+        }
+
+        // 4. CITAS
+        function obtenerCita() {
+            const indice = Math.floor(Math.random() * citasFilosoficas.length);
+            const cita = citasFilosoficas[indice];
+            document.getElementById('cita-texto').textContent = `"${cita.texto}"`;
+            document.getElementById('cita-autor').textContent = `— ${cita.autor}`;
+        }
+
+        // 5. GALERÍA
+        function cargarImagenes() {
+            const grid = document.getElementById('imagenes-grid');
+            grid.innerHTML = "<p>Cargando...</p>";
+            Promise.all([
+                fetch('https://dog.ceo/api/breeds/image/random').then(r=>r.json()),
+                fetch('https://dog.ceo/api/breeds/image/random').then(r=>r.json()),
+                fetch('https://dog.ceo/api/breeds/image/random').then(r=>r.json()),
+                fetch('https://dog.ceo/api/breeds/image/random').then(r=>r.json())
+            ]).then(resultados => {
+                grid.innerHTML = "";
+                resultados.forEach(d => {
+                    grid.innerHTML += `<img src="${d.message}">`;
+                });
+            });
+        }
+
+        // 6. CHISTES
+        function obtenerChiste() {
+            const indice = Math.floor(Math.random() * chistesEsp.length);
+            document.getElementById('chiste-texto').textContent = chistesEsp[indice];
+        }
+
+        // INICIO
+        window.onload = function() {
+            actualizarReloj();
+            obtenerCita();
+            obtenerChiste();
+            cargarImagenes();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test de Filosofía</title>
+    <link rel="stylesheet" href="Rocío Rocha Castro - archivo_css (1).css">
+    
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .pregunta-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .pregunta-card h3 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .opcion {
+            display: block;
+            margin: 10px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #ddd;
+            transition: 0.3s;
+        }
+        .opcion:hover {
+            color: #fff;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #d4af37; /* Color dorado para el puntito */
+        }
+        .btn-corregir {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .btn-corregir:hover {
+            background: #fff;
+            box-shadow: 0 0 15px #d4af37;
+        }
+        #resultado {
+            margin-top: 30px;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            display: none; /* Oculto al principio */
+            background: rgba(0,0,0,0.8);
+            color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="Rocío Rocha Castro - archivo_html.html" class="logo">FILOSOFÍA</a>
+        <div class="nav-links">
+            <a href="Rocío Rocha Castro - archivo_html.html">Inicio</a>
+            <a href="antigua.html">Antigua</a>
+            <a href="medieval.html">Medieval</a>
+            <a href="moderna.html">Moderna</a>
+            <a href="contemporanea.html">Contemporánea</a>
+        </div>
+    </nav>
+
+    <header class="header-pagina">
+        <h1>Test de Conocimientos</h1>
+        <p>Demuestra lo que has aprendido</p>
+    </header>
+
+    <main class="container quiz-container">
+        
+        <a href="Rocío Rocha Castro - archivo_html.html" class="btn-volver">← Volver al inicio</a>
+
+        <form id="quizForm">
+
+            <div class="pregunta-card">
+                <h3>1. Según Sócrates, ¿quién es el que obra mal?</h3>
+                <label class="opcion"><input type="radio" name="p1" value="a"> El que es malvado por naturaleza.</label>
+                <label class="opcion"><input type="radio" name="p1" value="b"> El ignorante, que no conoce el Bien.</label>
+                <label class="opcion"><input type="radio" name="p1" value="c"> El que quiere conseguir poder.</label>
+            </div>
+
+            <div class="pregunta-card">
+                <h3>2. En la política de Platón, ¿quiénes deben gobernar?</h3>
+                <label class="opcion"><input type="radio" name="p2" value="a"> Los guerreros más fuertes.</label>
+                <label class="opcion"><input type="radio" name="p2" value="b"> La mayoría democrática.</label>
+                <label class="opcion"><input type="radio" name="p2" value="c"> Los filósofos (Alma Racional).</label>
+            </div>
+
+            <div class="pregunta-card">
+                <h3>3. Aristóteles define al ser humano como:</h3>
+                <label class="opcion"><input type="radio" name="p3" value="a"> Zoon Politikon (Animal Político).</label>
+                <label class="opcion"><input type="radio" name="p3" value="b"> Homo Homini Lupus (Lobo para el hombre).</label>
+                <label class="opcion"><input type="radio" name="p3" value="c"> Una idea imperfecta.</label>
+            </div>
+
+            <div class="pregunta-card">
+                <h3>4. ¿Cómo se relacionan Fe y Razón en San Agustín?</h3>
+                <label class="opcion"><input type="radio" name="p4" value="a"> Son enemigas irreconciliables.</label>
+                <label class="opcion"><input type="radio" name="p4" value="b"> Colaboran: cree para entender.</label>
+                <label class="opcion"><input type="radio" name="p4" value="c"> La Fe sobra, solo importa la Razón.</label>
+            </div>
+
+            <div class="pregunta-card">
+                <h3>5. ¿Qué distingue Santo Tomás entre Dios y las criaturas?</h3>
+                <label class="opcion"><input type="radio" name="p5" value="a"> Nada, todo es Dios (Panteísmo).</label>
+                <label class="opcion"><input type="radio" name="p5" value="b"> Que Dios es materia y el mundo espíritu.</label>
+                <label class="opcion"><input type="radio" name="p5" value="c"> Dios es Ser Necesario; las criaturas, contingentes.</label>
+            </div>
+
+            <div class="pregunta-card">
+                <h3>6. ¿Cuál es la primera verdad indudable de Descartes?</h3>
+                <label class="opcion"><input type="radio" name="p6" value="a"> Dios existe.</label>
+                <label class="opcion"><input type="radio" name="p6" value="b"> Pienso, luego existo (Cogito ergo sum).</label>
+                <label class="opcion"><input type="radio" name="p6" value="c"> El mundo es matemático.</label>
+            </div>
+
+            <div class="pregunta-card">
+                <h3>7. Para Hume, ¿en qué se basa la moral?</h3>
+                <label class="opcion"><input type="radio" name="p7" value="a"> En la razón pura.</label>
+                <label class="opcion"><input type="radio" name="p7" value="b"> En el sentimiento y la utilidad (Emotivismo).</label>
+                <label class="opcion"><input type="radio" name="p7" value="c"> En los mandamientos divinos.</label>
+            </div>
+
+            <div class="pregunta-card">
+                <h3>8. ¿Qué es el Imperativo Categórico de Kant?</h3>
+                <label class="opcion"><input type="radio" name="p8" value="a"> Actuar buscando un premio o fin.</label>
+                <label class="opcion"><input type="radio" name="p8" value="b"> Actuar solo según una ley universalizable.</label>
+                <label class="opcion"><input type="radio" name="p8" value="c"> Actuar según mis emociones.</label>
+            </div>
+
+            <div class="pregunta-card">
+                <h3>9. Completa la frase de Ortega: "Yo soy yo y mi..."</h3>
+                <label class="opcion"><input type="radio" name="p9" value="a"> ...pensamiento.</label>
+                <label class="opcion"><input type="radio" name="p9" value="b"> ...voluntad.</label>
+                <label class="opcion"><input type="radio" name="p9" value="c"> ...circunstancia.</label>
+            </div>
+
+            <div class="pregunta-card">
+                <h3>10. ¿Qué propone Habermas frente a la violencia?</h3>
+                <label class="opcion"><input type="radio" name="p10" value="a"> La Acción Comunicativa y el diálogo.</label>
+                <label class="opcion"><input type="radio" name="p10" value="b"> La imposición de la técnica.</label>
+                <label class="opcion"><input type="radio" name="p10" value="c"> Volver al mito antiguo.</label>
+            </div>
+
+            <button type="button" class="btn-corregir" onclick="corregirTest()">CORREGIR TEST</button>
+        </form>
+
+        <div id="resultado"></div>
+
+    </main>
+
+    <script>
+        function corregirTest() {
+            // Respuestas correctas
+            const respuestas = ['b', 'c', 'a', 'b', 'c', 'b', 'b', 'b', 'c', 'a'];
+            let aciertos = 0;
+            let total = respuestas.length;
+
+            // Bucle para comprobar cada pregunta
+            for (let i = 0; i < total; i++) {
+                let nombre = 'p' + (i + 1);
+                let opcion = document.querySelector('input[name="' + nombre + '"]:checked');
+                
+                if (opcion && opcion.value === respuestas[i]) {
+                    aciertos++;
+                }
+            }
+
+            // Mostrar resultado
+            let divResultado = document.getElementById('resultado');
+            divResultado.style.display = 'block';
+            
+            if (aciertos >= 5) {
+                divResultado.innerHTML = "¡Enhorabuena! Has sacado un " + aciertos + " sobre " + total;
+                divResultado.style.borderColor = "#00ff00"; // Borde verde si aprueba
+            } else {
+                divResultado.innerHTML = "Vaya... has sacado un " + aciertos + " sobre " + total + ". ¡Repasa un poco más!";
+                divResultado.style.borderColor = "#ff0000"; // Borde rojo si suspende
+            }
+            
+            // Scroll suave hacia el resultado
+            divResultado.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
